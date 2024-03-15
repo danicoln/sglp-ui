@@ -10,9 +10,9 @@
 @import "../node_modules/@fortawesome/fontawesome-free/css/fontawesome.min.css";
 @import "../node_modules/@fortawesome/fontawesome-free/css/fontawesome.css";
 
-.body{
+body{
   margin: 0;
-
+  background: #f8f9fa;
 }
 
 .titulo-header{
