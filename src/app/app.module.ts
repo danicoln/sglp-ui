@@ -8,6 +8,7 @@ import { PanelMenuModule } from 'primeng/panelmenu';
 import { SidebarModule } from 'primeng/sidebar';
 import { ButtonModule } from 'primeng/button';
 import { AvatarModule } from 'primeng/avatar';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 import { AppRoutingModule } from './app-routing.module';
 
@@ -32,7 +33,8 @@ import { SidebarComponent } from './components/sidebar/sidebar.component';
     PanelMenuModule,
     SidebarModule,
     ButtonModule,
-    AvatarModule
+    AvatarModule,
+    FontAwesomeModule
 
   ],
   providers: [],

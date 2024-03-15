@@ -7,9 +7,12 @@
 
 @import "../node_modules/primeflex/primeflex.scss";
 
+@import "../node_modules/@fortawesome/fontawesome-free/css/fontawesome.min.css";
+@import "../node_modules/@fortawesome/fontawesome-free/css/fontawesome.css";
+
 .body{
   margin: 0;
- 
+
 }
 
 .titulo-header{

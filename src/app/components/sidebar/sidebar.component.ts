@@ -9,6 +9,8 @@ import { Sidebar } from 'primeng/sidebar';
 })
 export class SidebarComponent implements OnInit {
 
+  nomeUsuario: string = 'Daniel Lincoln';
+
   @ViewChild('sidebarRef') sidebarRef!: Sidebar;
 
     closeCallback(e: any): void {

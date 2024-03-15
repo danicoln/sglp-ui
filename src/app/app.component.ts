@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { MenuItem } from 'primeng/api';
 
 @Component({
   selector: 'app-root',
@@ -9,5 +8,5 @@ import { MenuItem } from 'primeng/api';
 export class AppComponent {
   title = 'sglp';
 
-  
+
 }
