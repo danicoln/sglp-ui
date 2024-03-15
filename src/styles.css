@@ -2,12 +2,14 @@
 @import "primeng/resources/primeng.css";
 @import "primeicons/primeicons.css";
 
+@import "../node_modules/primeicons/primeicons.css";
+@import "../node_modules/primeng/resources/primeng.min.css";
+
+@import "../node_modules/primeflex/primeflex.scss";
+
 .body{
   margin: 0;
-  font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif ,sans-serif;
-  font-weight:400;
-  font-size:16px;
-  line-height:1.625;
+ 
 }
 
 .titulo-header{
