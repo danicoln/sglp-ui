@@ -14,6 +14,13 @@ export class LaudoPericialComponent implements OnInit {
 
   laudoPericial: LaudoPericial = new LaudoPericial();
 
+  objetivoPreenchido: boolean = false;
+  objetivo!: string;
+  metodologia!: string;
+  historico!: string;
+  conclusao!: string;
+  introducao!: string;
+
   constructor(
     private laudoPericialService: LaudoPericialService,
     private route: ActivatedRoute,
