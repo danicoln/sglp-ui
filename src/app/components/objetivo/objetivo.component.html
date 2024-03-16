@@ -1,0 +1,25 @@
+<div class="grid objetivo">
+  <p-card class="col-12 md:col-6" *ngIf="!objetivoPreenchido">
+    <p-fieldset legend="Objetivo" [toggleable]="true">
+      <div class="flex justify-content-center">
+        <textarea pKeyFilter="int" rows="5" cols="60" pInputTextarea [(ngModel)]="objetivo"></textarea>
+      </div>
+      <div class="btnSalvar">
+        <p-button pRipple label="Salvar"></p-button>
+      </div>
+    </p-fieldset>
+  </p-card>
+
+    <!--Documentos que precisam ser periciados (IA)-->
+  <p-card class="col-12 md:col-6" header="Documentos que precisam ser periciados" *ngIf="!objetivoPreenchido">
+    <p>
+      De acordo com o Objesto da Matéria, é necessário realizar perícia nos seguintes documentos:
+    </p>
+    <ul>
+      <li>Contrato bancário</li>
+      <li>Extrato bancário</li>
+      <li>Comprovantes de pagamento</li>
+    </ul>
+    <p>Verificar se esses documentos encontram-se nos autos</p>
+  </p-card>
+</div>

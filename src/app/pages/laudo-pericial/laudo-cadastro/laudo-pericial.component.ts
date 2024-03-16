@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { LaudoPericial } from '../shared/laudo-pericial';
+import { LaudoPericial } from './shared/laudo-pericial';
 import { ActivatedRoute } from '@angular/router';
-import { LaudoPericialService } from '../shared/laudo-pericial.service';
+import { LaudoPericialService } from './shared/laudo-pericial.service';
 import { NgForm } from '@angular/forms';
 import { ErrorHandlerService } from '../../../core/error-handler.service';
 
@@ -14,8 +14,6 @@ export class LaudoPericialComponent implements OnInit {
 
   laudoPericial: LaudoPericial = new LaudoPericial();
 
-  objetivoPreenchido: boolean = false;
-  objetivo!: string;
   metodologia!: string;
   historico!: string;
   conclusao!: string;
