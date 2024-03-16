@@ -1,1 +1,98 @@
-<p>laudo-pericial works!</p>
+<div class="container">
+
+  <div class="grid">
+
+    <p-card class="col-12 md:col-12" header="Laudo Pericial">
+      <p class="processo">
+        Número Processo: 010101.99.2024.9.99.0000
+      </p>
+      <p class="autor">
+        Autor: Fulano de Tal
+      </p>
+      <p class="reu">
+        Réu: Ciclano de Tal
+      </p>
+    </p-card>
+
+    <!--Objetivo da Perícia-->
+    <p-card class="col-12 md:col-6" *ngIf="!objetivoPreenchido">
+      <p-fieldset legend="Objetivo" [toggleable]="true">
+        <div class="flex justify-content-center">
+          <textarea pKeyFilter="int" rows="5" cols="60" pInputTextarea [(ngModel)]="objetivo"></textarea>
+        </div>
+        <div class="btnSalvar">
+          <p-button pRipple label="Salvar"></p-button>
+        </div>
+      </p-fieldset>
+    </p-card>
+
+    <!--Documentos que precisam ser periciados (IA)-->
+    <p-card class="col-12 md:col-6" header="Documentos que precisam ser periciados" *ngIf="!objetivoPreenchido">
+      <p>
+        De acordo com o Objesto da Matéria, é necessário realizar perícia nos seguintes documentos:
+      </p>
+      <ul>
+        <li>Contrato bancário</li>
+        <li>Extrato bancário</li>
+        <li>Comprovantes de pagamento</li>
+      </ul>
+      <p>Verificar se esses documentos encontram-se nos autos</p>
+    </p-card>
+
+    <!--Objeto do Laudo-->
+    <p-card class="col-12 md:col-12" header="Componente: Obj do Laudo">
+
+    </p-card>
+
+    <!--Metodologia Aplicada-->
+    <p-card class="col-12 md:col-6">
+      <p-fieldset legend="Metodologia Aplicada" [toggleable]="true">
+        <div class="flex justify-content-center">
+          <textarea pKeyFilter="int" rows="5" cols="60" pInputTextarea [(ngModel)]="metodologia"></textarea>
+        </div>
+      </p-fieldset>
+    </p-card>
+
+    <!--Exame da Matéria-->
+    <p-card class="col-12 md:col-12" header="Componente: Exame da Matéria">
+
+    </p-card>
+
+    <!--Histórico-->
+    <p-card class="col-12 md:col-6">
+      <p-fieldset legend="Histórico" [toggleable]="true">
+        <div class="flex justify-content-center">
+          <textarea pKeyFilter="int" rows="5" cols="60" pInputTextarea [(ngModel)]="historico"></textarea>
+        </div>
+      </p-fieldset>
+    </p-card>
+
+    <!--Quesitos-->
+    <p-card class="col-12 md:col-12" header="Componente: Quesitos">
+
+    </p-card>
+
+    <!--Conclusão-->
+    <p-card class="col-12 md:col-6">
+      <p-fieldset legend="Conclusão" [toggleable]="true">
+        <div class="flex justify-content-center">
+          <textarea pKeyFilter="int" rows="5" cols="60" pInputTextarea [(ngModel)]="conclusao"></textarea>
+        </div>
+      </p-fieldset>
+    </p-card>
+
+    <!--Introdução-->
+    <p-card class="col-12 md:col-6">
+      <p-fieldset legend="Introdução" [toggleable]="true">
+        <div class="flex justify-content-center">
+          <textarea pKeyFilter="int" rows="5" cols="60" pInputTextarea [(ngModel)]="introducao"></textarea>
+        </div>
+      </p-fieldset>
+    </p-card>
+
+    <p-card class=" col-6 md:col-3" header="Data do Laudo">
+
+    </p-card>
+
+  </div>
+</div>

@@ -4,6 +4,11 @@ import { LaudoPericialComponent } from './laudo-cadastro/laudo-pericial.componen
 import { LaudoPericialRoutingModule } from './laudo-pericial-routing.module';
 import { SharedModule } from '../../shared/shared.module';
 import { RouterModule } from '@angular/router';
+import { CardModule } from 'primeng/card';
+import { FieldsetModule } from 'primeng/fieldset';
+import { InputTextareaModule } from 'primeng/inputtextarea';
+import { FormsModule } from '@angular/forms';
+import { ButtonModule } from 'primeng/button';
 
 
 @NgModule({
@@ -11,9 +16,14 @@ import { RouterModule } from '@angular/router';
     LaudoPericialComponent
   ],
   imports: [
+    FormsModule,
     RouterModule,
     SharedModule,
     CommonModule,
+    CardModule,
+    FieldsetModule,
+    InputTextareaModule,
+    ButtonModule,
 
     LaudoPericialRoutingModule
   ]

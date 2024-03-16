@@ -1,8 +1,6 @@
-.container-header {
+.sidebar {
   display: flex;
   height: 4rem;
-  flex-wrap: wrap;
-  position: fixed;
   padding: 0 2rem;
   left: 0;
   top: 0;
@@ -11,7 +9,10 @@
   border-radius: 3px;
   border-bottom: 1px solid;
   border-color: #c0c0c0;
+  align-content: center;
+  align-items: center;
 }
+
 
 .header {
   align-items: center;
@@ -21,8 +22,3 @@
   font-size: 14px;
 }
 
-.sidebar {
-  display: flex;
-  align-content: center;
-  align-items: center;
-}
