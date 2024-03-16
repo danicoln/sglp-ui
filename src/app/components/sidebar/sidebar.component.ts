@@ -47,7 +47,8 @@ export class SidebarComponent implements OnInit {
         items: [
           {
             label: 'Novo',
-            icon: 'pi pi-fw pi-plus-circle'
+            icon: 'pi pi-fw pi-plus-circle',
+            routerLink: '/laudos/novo'
           },
           {
             label: 'Consultar',

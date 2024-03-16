@@ -10,29 +10,33 @@
 @import "../node_modules/@fortawesome/fontawesome-free/css/fontawesome.min.css";
 @import "../node_modules/@fortawesome/fontawesome-free/css/fontawesome.css";
 
-body{
+body {
   margin: 0;
+  padding: 3rem 1rem 1rem;
   background: #f8f9fa;
 }
 
-.titulo-header{
+.container {
+  padding: 6rem 2rem 2rem;
+}
+
+.titulo-header {
   display: flex;
 }
 
-.logo{
+.logo {
   width: 110px;
   display: flex;
 }
 
-.header{
+.header {
   display: flex;
   align-items: center;
 }
 
-h1{
-  color:#333;
+h1 {
+  color: #333;
   font-size: weight 700px;
-  margin:0;
-  line-height:1.2
+  margin: 0;
+  line-height: 1.2
 }
-
