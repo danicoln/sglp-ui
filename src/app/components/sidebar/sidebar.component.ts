@@ -52,7 +52,8 @@ export class SidebarComponent implements OnInit {
           },
           {
             label: 'Consultar',
-            icon: 'pi pi-fw pi-list'
+            icon: 'pi pi-fw pi-list',
+            routerLink: '/laudos'
           },
 
         ]

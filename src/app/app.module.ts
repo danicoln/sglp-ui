@@ -17,7 +17,10 @@ import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { SharedModule } from './shared/shared.module';
 import { CoreModule } from './core/core.module';
 import { RouterModule } from '@angular/router';
-import { LaudoPericialModule } from './components/laudo-pericial/laudo-pericial.module';
+import { LaudoPericialModule } from './pages/laudo-pericial/laudo-pericial.module';
+import { CardModule } from 'primeng/card';
+import { FieldsetModule } from 'primeng/fieldset';
+import { FormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -28,6 +31,7 @@ import { LaudoPericialModule } from './components/laudo-pericial/laudo-pericial.
 
   ],
   imports: [
+    FormsModule,
     BrowserModule,
     BrowserAnimationsModule,
     AppRoutingModule,
@@ -39,6 +43,8 @@ import { LaudoPericialModule } from './components/laudo-pericial/laudo-pericial.
     FontAwesomeModule,
     SharedModule,
     CoreModule,
+    CardModule,
+    FieldsetModule,
     RouterModule,
     LaudoPericialModule
 
