@@ -1,1 +1,19 @@
-<p>laudo-list works!</p>
+<div class="container">
+  <div class="grid">
+
+    <!--filtro-->
+    <form autocomplete="off" (ngSubmit)="pesquisar()">
+
+      <div class="col-12">
+        <h1>Filtro de Laudos</h1>
+      </div>
+      <div class="col-12 p-fluid">
+        <label>Objetivo</label>
+        <input type="text" pInputText name="objetivo" [(ngModel)]="filtro.objetivo">
+      </div>
+
+    </form>
+
+  </div>
+</div>
+
