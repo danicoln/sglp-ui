@@ -6,8 +6,10 @@ import { RouterModule } from '@angular/router';
 import { CardModule } from 'primeng/card';
 import { FieldsetModule } from 'primeng/fieldset';
 import { InputTextareaModule } from 'primeng/inputtextarea';
-import { FormsModule } from '@angular/forms';
 import { ButtonModule } from 'primeng/button';
+import { InputTextModule } from 'primeng/inputtext';
+
+import { FormsModule } from '@angular/forms';
 import { LaudoListComponent } from './laudo-list/laudo-list.component';
 import { SharedModule } from '../../shared/shared.module';
 
@@ -23,6 +25,7 @@ import { SharedModule } from '../../shared/shared.module';
     CommonModule,
     CardModule,
     FieldsetModule,
+    InputTextModule,
     InputTextareaModule,
     ButtonModule,
     SharedModule,
