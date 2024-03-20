@@ -10,6 +10,7 @@ export class LaudoPericial {
     public conclusao?: string;
     public introducao?: string;
     public dataDoLaudo?: Date;
+    public status?: string;
 
   constructor(
 

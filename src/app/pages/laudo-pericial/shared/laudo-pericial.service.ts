@@ -22,11 +22,11 @@ export class LaudoPericialService {
     const headers = new HttpHeaders().set('Authorization', this.chave);
     let paramentros = new HttpParams();
 
-/**
- if (laudo.objetivo) {
-   paramentros.set('objetivo', laudo.objetivo);
- }
- */
+    /**
+     if (laudo.objetivo) {
+       paramentros.set('objetivo', laudo.objetivo);
+     }
+     */
 
     return this.http.get<any>(`${this.url}`,
       { headers, params: paramentros })
@@ -52,15 +52,18 @@ export class LaudoPericialService {
   }
 
   //CONFERIR
-  listar(): Promise<any[]> {
+  async listar(): Promise<LaudoPericial[]> {
     const headers = new HttpHeaders().set('Authorization', this.chave);
 
-    return this.http.get(`${this.url}`, { headers })
-      .toPromise()
-      .then((response: any) => {
-        return response;
-      });
+    try {
+      const response = await this.http.get<LaudoPericial[]>(this.url, { headers }).toPromise();
+      return response || [];
+    } catch (error) {
 
+      console.error('Erro ao listar laudos:', error);
+      throw error;
+    }
   }
-
 }
+
+
