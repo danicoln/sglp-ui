@@ -18,14 +18,15 @@ export class LaudoPericialService {
   ) { }
 
   //CONFERIR
-  pesquisar(laudo: LaudoPericial): Promise<any> {
+  pesquisar(): Promise<any> {
     const headers = new HttpHeaders().set('Authorization', this.chave);
     let paramentros = new HttpParams();
 
-
-    if (laudo.objetivo) {
-      paramentros.set('objetivo', laudo.objetivo);
-    }
+/**
+ if (laudo.objetivo) {
+   paramentros.set('objetivo', laudo.objetivo);
+ }
+ */
 
     return this.http.get<any>(`${this.url}`,
       { headers, params: paramentros })

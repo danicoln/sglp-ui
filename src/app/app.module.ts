@@ -7,6 +7,8 @@ import { PanelMenuModule } from 'primeng/panelmenu';
 import { SidebarModule } from 'primeng/sidebar';
 import { ButtonModule } from 'primeng/button';
 import { AvatarModule } from 'primeng/avatar';
+import { FileUploadModule } from 'primeng/fileupload';
+
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -46,7 +48,9 @@ import { FormsModule } from '@angular/forms';
     CardModule,
     FieldsetModule,
     RouterModule,
-    LaudoPericialModule
+    LaudoPericialModule,
+    FileUploadModule
+
 
   ],
   providers: [],
