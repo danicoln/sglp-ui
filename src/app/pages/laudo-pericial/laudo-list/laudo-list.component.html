@@ -2,178 +2,109 @@
 
   <p-toast></p-toast>
   <p-toolbar styleClass="mb-4 gap-2">
+
+    <!--Botões de Criar e Deletar-->
     <ng-template pTemplate="left">
-      <p-button pRipple label="Novo" icon="pi pi-plus" severity="success mr-2"
-        (click)="openNew()"></p-button>
-      <p-button pRipple label="Deletar" icon="pi pi-trash" severity="danger"
-        (click)="deletarLaudosSelecionados()" [disabled]="!laudosSelecionado || !laudosSelecionado.length"></p-button>
+      <a href="/laudos/novo">
+        <p-button
+          pRipple
+          label="Novo"
+          icon="pi pi-plus"
+          severity="success mr-2"
+          >
+        </p-button>
+      </a>
+      <p-button
+        pRipple
+        label="Deletar"
+        icon="pi pi-trash"
+        severity="danger"
+        (click)="deletarLaudosSelecionados()"
+        [disabled]="!laudosSelecionado || !laudosSelecionado.length"
+        >
+      </p-button>
     </ng-template>
 
+    <!--Botões de importar e exportar-->
     <ng-template pTemplate="right">
-      <!--Botões de importar e exportar-->
-
       <p-fileUpload mode="basic" accept="image/*" [maxFileSize]="1000000" label="Importar" chooseLabel="Import"
         class="mr-2 inline-block"></p-fileUpload>
       <p-button pRipple label="Exportar" icon="pi pi-upload"></p-button>
     </ng-template>
   </p-toolbar>
 
-  <!--Lista de Laudos Periciais-->
-  <p-table #dt [value]="laudos" [rows]="10" [paginator]="true"
-        [globalFilterFields]="['name', 'country.name', 'representative.name', 'status']"
-        [tableStyle]="{ 'min-width': '75rem' }" [(selection)]="laudosSelecionado" [rowHover]="true" dataKey="id"
-        currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries" [showCurrentPageReport]="true">
-        <ng-template pTemplate="caption">
-          <div class="flex align-items-center justify-content-between">
-            <h5 class="m-0">Gerenciamento de Laudos Periciais</h5>
-            <span class="p-input-icon-left">
-              <i class="pi pi-search"></i>
-              <!-- filtro -> erro no $event.target.value -->
-              <input pInputText type="text" (input)="dt.filterGlobal($event.target , 'contains')" placeholder="Buscar..." />
-            </span>
-          </div>
-        </ng-template>
-        <ng-template pTemplate="header">
-          <tr>
-            <th style="width: 4rem">
-              <p-tableHeaderCheckbox></p-tableHeaderCheckbox>
-            </th>
-            <th pSortableColumn="id" style="min-width:15rem">Id<p-sortIcon field="id"></p-sortIcon></th>
-            <th pSortableColumn="objetivo" style="min-width:15rem">Objetivo<p-sortIcon field="objetivo"></p-sortIcon></th>
-            <!--
-              <th>Image</th>
-            -->
-            <th pSortableColumn="valorHonorarios">Valor Honorários<p-sortIcon field="valorHonorarios"></p-sortIcon></th>
-            <th pSortableColumn="objeto" style="min-width:10rem">Quantidade de Objeto <p-sortIcon field="objeto"></p-sortIcon></th>
-            <th pSortableColumn="rating">Reviews <p-sortIcon field="rating"></p-sortIcon></th>
-            <th pSortableColumn="statusLaudo" style="min-width:10rem">Status<p-sortIcon field="statusLaudo"></p-sortIcon></th>
-            <th></th>
-          </tr>
-        </ng-template>
-        <ng-template pTemplate="body" let-laudo>
-          <tr>
-            <td>
-              <p-tableCheckbox [value]="laudo"></p-tableCheckbox>
-            </td>
-            <td>{{ laudo.id }}</td>
-            <!-- Não tem imagem
-              <td><img [src]="'https://primefaces.org/cdn/primeng/images/demo/product/' + laudo.image" [alt]="laudo.name"
-                  width="50" class="shadow-4" /></td>
-            -->
-            <td>{{ laudo.objetivo }}</td>
-            <td>{{ laudo.valorHonorarios | currency: 'BRL' }}</td>
-            <td>{{ laudo.objeto.documentos.length }}</td>
-            <td><p-rating [ngModel]="laudo.rating" [readonly]="true" [cancel]="false"></p-rating></td>
+  <!--Tabela de Laudos Periciais-->
+  <p-table
+    #dt
+    [value]="laudos"
+    [rows]="10"
+    [paginator]="true"
+    [tableStyle]="{ 'min-width': '75rem' }"
+    [(selection)]="laudosSelecionado"
+    [rowHover]="true"
+    dataKey="id"
+    currentPageReportTemplate="Mostrando {first} a {last} de {totalRecords} entradas"
+    [showCurrentPageReport]="true"
+    ><!--[globalFilterFields]="['name', 'country.name', 'representative.name', 'status']"-->
 
-            <!--
-                  Status -> Ideia: Em andamento; Concluido; Iniciar; Aguardando;
-                  <td>
-                      <p-tag [value]="laudo.inventoryStatus" [severity]="getSeverity(product.inventoryStatus)"></p-tag>
-                  </td>
-                -->
-            <td>
-              <p-tag [value]="laudo.status" [severity]="getSeverity(laudo.status)"></p-tag>
-            </td>
-            <td>
-              <button pButton pRipple icon="pi pi-pencil" class="p-button-rounded p-button-success mr-2"
-                (click)="editarLaudo(laudo)"></button>
-              <button pButton pRipple icon="pi pi-trash" class="p-button-rounded p-button-warning"
-                (click)="deletarLaudo(laudo)"></button>
-            </td>
-          </tr>
-        </ng-template>
-        <ng-template pTemplate="summary">
-          <div class="flex align-items-center justify-content-between">Total de {{ laudo ? laudos.length : 0
-            }} laudos.</div>
-        </ng-template>
-      </p-table>
+    <ng-template pTemplate="caption">
+      <div class="flex align-items-center justify-content-between">
+        <h5 class="m-0">Gerenciamento de Laudos Periciais</h5>
+        <span class="p-input-icon-left">
+          <i class="pi pi-search"></i>
+          <!-- filtro -> erro no $event.target.value -->
+          <input pInputText type="text" (input)="dt.filterGlobal($event.target , 'contains')" placeholder="Buscar..." />
+        </span>
+      </div>
+    </ng-template>
+    <!--Header Table-->
+    <ng-template pTemplate="header">
+      <tr>
+        <th style="width: 4rem">
+          <p-tableHeaderCheckbox></p-tableHeaderCheckbox>
+        </th>
+        <th pSortableColumn="id" style="min-width:15rem">ID<p-sortIcon field="id"></p-sortIcon></th>
+        <th pSortableColumn="objetivo" style="min-width:15rem">Objetivo<p-sortIcon field="objetivo"></p-sortIcon></th>
+        <th pSortableColumn="valorHonorarios">Valor Honorários<p-sortIcon field="valorHonorarios"></p-sortIcon></th>
+        <th pSortableColumn="objeto" style="min-width:10rem">Quantidade de Objeto <p-sortIcon field="objeto"></p-sortIcon></th>
+        <!--TODO: Colocar barra de %
+        <th pSortableColumn="rating">Reviews <p-sortIcon field="rating"></p-sortIcon></th>
+        -->
+        <th pSortableColumn="statusLaudo" style="min-width:10rem">Status<p-sortIcon field="statusLaudo"></p-sortIcon></th>
+        <th></th>
+      </tr>
+    </ng-template>
+    <!--Body Table-->
+    <ng-template pTemplate="body" let-laudo>
+      <tr>
+        <td>
+          <p-tableCheckbox [value]="laudo"></p-tableCheckbox>
+        </td>
+        <td>{{ laudo.id }}</td>
+        <td>{{ laudo.objetivo }}</td>
+        <td>{{ laudo.valorHonorarios | currency: 'BRL' }}</td>
+        <td>{{ laudo.objeto?.documentos?.length }}</td>
+        <!--TODO: Colocar barra de %
+          <td><p-rating [ngModel]="laudo.rating" [readonly]="false" [cancel]="false"></p-rating></td>
+        -->
+        <td>
+          <p-tag [value]="laudo.status" [severity]="getSeverity(laudo.status)"></p-tag>
+        </td>
+        <td>
+          <a (click)="editarLaudo(laudo)"><i style="color: green;" class="pi pi-pencil mr-2"></i></a>
+          <i style="color: red;" class="pi pi-trash" (click)="deletarLaudo(laudo)"></i>
+        </td>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="summary">
+      <div class="flex align-items-center justify-content-between">Total de {{ laudos ? laudos.length : 0
+        }} laudos.</div>
+    </ng-template>
+  </p-table>
 
       <!--=======================================================================================================================================================-->
-
-      <p-dialog [(visible)]="laudoDialog" [style]="{ width: '450px' }" header="Product Details" [modal]="true"
-      styleClass="p-fluid">
-      <ng-template pTemplate="content">
-        <!-- Laudo não tem imagem
-
-          <img [src]="'https://primefaces.org/cdn/primeng/images/demo/product/' + laudo.image" [alt]="laudo.image" class="block m-auto pb-3" *ngIf="laudo.image" />
-        -->
-
-        <div class="field">
-          <label for="name">Name</label>
-          <input type="text" pInputText id="name" [(ngModel)]="laudo.id" required autofocus />
-          <small class="p-error" *ngIf="submitted && !laudo.id">Name is required.</small>
-        </div>
-        <div class="field">
-          <label for="description">Objetivo do Laudo</label>
-          <textarea id="description" pInputTextarea [(ngModel)]="laudo.objetivo" required rows="3" cols="20"></textarea>
-        </div>
-
-        <div class="field">
-          <label for="inventoryStatus">Inventory Status</label>
-          <!--
-                <p-dropdown [(ngModel)]="product.inventoryStatus" inputId="inventoryStatus" [options]="statuses">
-                    <ng-template pTemplate="selectedItem">
-                        <p-tag [value]="product.inventoryStatus.toUpperCase()" [severity]="getSeverity(product.inventoryStatus.toUpperCase())"></p-tag>
-                    </ng-template>
-                    <ng-template let-option pTemplate="item">
-                        <p-tag [value]="option.label" [severity]="getSeverity(option.label)"></p-tag>
-                    </ng-template>
-                </p-dropdown>
-              -->
-        </div>
-
-        <div class="field">
-          <label class="mb-3">Category</label>
-          <div class="formgrid grid">
-            <!--
-              <div class="field-radiobutton col-6">
-                <p-radioButton id="category1" name="category" value="Accessories"
-                  [(ngModel)]="product.category"></p-radioButton>
-                <label for="category1">Accessories</label>
-              </div>
-              <div class="field-radiobutton col-6">
-                <p-radioButton id="category2" name="category" value="Clothing"
-                  [(ngModel)]="product.category"></p-radioButton>
-                <label for="category2">Clothing</label>
-              </div>
-              <div class="field-radiobutton col-6">
-                <p-radioButton id="category3" name="category" value="Electronics"
-                  [(ngModel)]="product.category"></p-radioButton>
-                <label for="category3">Electronics</label>
-              </div>
-              <div class="field-radiobutton col-6">
-                <p-radioButton id="category4" name="category" value="Fitness"
-                  [(ngModel)]="product.category"></p-radioButton>
-                <label for="category4">Fitness</label>
-              </div>
-            -->
-          </div>
-        </div>
-        <div class="formgrid grid">
-          <div class="field col">
-            <label for="price">Price</label>
-            <!-- Inserir valor arbitrado
-              <p-inputNumber id="price" [(ngModel)]="laudo.honorario" mode="currency" currency="USD"
-                locale="en-US"></p-inputNumber>
-            -->
-          </div>
-          <div class="field col">
-            <label for="quantity">Quantity</label>
-            <!--
-              <p-inputNumber id="quantity" [(ngModel)]="product.quantity"></p-inputNumber>
-            -->
-          </div>
-        </div>
-      </ng-template>
-      <ng-template pTemplate="footer">
-        <button pButton pRipple label="Cancel" icon="pi pi-times" class="p-button-text" (click)="esconderDialog()"></button>
-        <button pButton pRipple label="Save" icon="pi pi-check" class="p-button-text" (click)="salvarLaudo()"></button>
-      </ng-template>
-    </p-dialog>
-
-    <!--
       <p-confirmDialog [style]="{ width: '450px' }"></p-confirmDialog>
+    <!--
     -->
-
 </p-card>
 
