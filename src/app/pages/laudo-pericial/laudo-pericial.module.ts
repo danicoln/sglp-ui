@@ -8,6 +8,14 @@ import { FieldsetModule } from 'primeng/fieldset';
 import { InputTextareaModule } from 'primeng/inputtextarea';
 import { ButtonModule } from 'primeng/button';
 import { InputTextModule } from 'primeng/inputtext';
+import { TableModule } from 'primeng/table';
+import { ToolbarModule } from 'primeng/toolbar';
+import { ToastModule } from 'primeng/toast';
+import { FileUploadModule } from 'primeng/fileupload';
+import { TagModule } from 'primeng/tag';
+import { RatingModule } from 'primeng/rating';
+import { DialogModule } from 'primeng/dialog';
+import { ConfirmDialogModule } from 'primeng/confirmdialog';
 
 import { FormsModule } from '@angular/forms';
 import { LaudoListComponent } from './laudo-list/laudo-list.component';
@@ -29,6 +37,15 @@ import { SharedModule } from '../../shared/shared.module';
     InputTextareaModule,
     ButtonModule,
     SharedModule,
+    TableModule,
+    ToolbarModule,
+    ToastModule,
+    FileUploadModule,
+    TagModule,
+    RatingModule,
+    DialogModule,
+    ConfirmDialogModule,
+
 
     LaudoPericialRoutingModule
   ]
