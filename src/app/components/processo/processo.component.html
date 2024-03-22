@@ -1,0 +1,65 @@
+<p-card class="col-12 md:col-12" header="Dados do Processo">
+  <div class="grid">
+
+    <!--Número do Processo-->
+    <div class="col-12 md:col-12">
+      <div class="row">
+        <b class="label">Número</b>
+        <input
+          placeholder="Número"
+          pInputText
+          label="Número do Processo"
+          type="text"
+          [(ngModel)]="numero" />
+      </div>
+    </div>
+
+    <!--Autor-->
+    <div class="col-12 md:col-12">
+        <div class="row">
+          <b class="label">Autor</b>
+          <app-dropdown
+            name="label"
+            [options]="tiposAutor"
+            [(ngModel)]="autorSelecionado"
+            placeholder="Selecione"
+            (valueChange)="onDropdownValueChange($event, 'autor')"
+            >
+          </app-dropdown>
+      </div>
+    </div>
+
+    <!--Réu-->
+    <div class="col-12 md:col-12 sm:col-6 lg:col-12">
+      <div class="row">
+        <b class="label">Réu</b>
+        <!--
+          <input
+            pInputText
+            [(ngModel)]="parteReu"
+          >
+
+        -->
+        <app-dropdown
+            name="reu"
+            [options]="tiposReu"
+            [(ngModel)]="reuSelecionado"
+            placeholder="Selecione"
+            >
+          </app-dropdown>
+
+      </div>
+    </div>
+
+  </div>
+
+  <p-button
+    (click)="salvarDados()"
+    pRipple
+    label="Salvar"
+    severity="success mr-2"
+    [disabled]="!isPreenchido()"
+    >
+  </p-button>
+
+</p-card>

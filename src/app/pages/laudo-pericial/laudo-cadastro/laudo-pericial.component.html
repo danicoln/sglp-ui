@@ -1,21 +1,19 @@
+<form  (ngSubmit)="salvarLaudo()">
+
+
+</form>
 <div class="container">
 
   <div class="grid">
-
-    <p-card class="col-12 md:col-12" header="Laudo Pericial">
-      <p class="processo">
-        Número Processo: 010101.99.2024.9.99.0000
-      </p>
-      <p class="autor">
-        Autor: Fulano de Tal
-      </p>
-      <p class="reu">
-        Réu: Ciclano de Tal
-      </p>
-    </p-card>
+    <!--Dados do processo -->
+    <div class="col-12">
+      <app-processo></app-processo>
+    </div>
 
     <!--Objetivo da Perícia-->
     <app-objetivo></app-objetivo>
+
+
 
     <!--Objeto do Laudo-->
     <p-card class="col-12 md:col-12" header="Componente: Obj do Laudo">
@@ -74,3 +72,4 @@
 
   </div>
 </div>
+

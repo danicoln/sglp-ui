@@ -1,8 +1,9 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { RouterModule } from '@angular/router';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { LaudoPericialComponent } from './laudo-cadastro/laudo-pericial.component';
 import { LaudoPericialRoutingModule } from './laudo-pericial-routing.module';
-import { RouterModule } from '@angular/router';
 import { CardModule } from 'primeng/card';
 import { FieldsetModule } from 'primeng/fieldset';
 import { InputTextareaModule } from 'primeng/inputtextarea';
@@ -17,7 +18,6 @@ import { RatingModule } from 'primeng/rating';
 import { DialogModule } from 'primeng/dialog';
 import { ConfirmDialogModule } from 'primeng/confirmdialog';
 
-import { FormsModule } from '@angular/forms';
 import { LaudoListComponent } from './laudo-list/laudo-list.component';
 import { SharedModule } from '../../shared/shared.module';
 
@@ -28,6 +28,7 @@ import { SharedModule } from '../../shared/shared.module';
     LaudoListComponent
   ],
   imports: [
+    ReactiveFormsModule,
     FormsModule,
     RouterModule,
     CommonModule,

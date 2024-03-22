@@ -18,6 +18,7 @@ export class LaudoPericialComponent implements OnInit {
   historico!: string;
   conclusao!: string;
   introducao!: string;
+  laudoForm!: NgForm;
 
   constructor(
     private laudoPericialService: LaudoPericialService,
@@ -37,18 +38,19 @@ export class LaudoPericialComponent implements OnInit {
     alert('Laudo Pericial')
   }
 
-  salvarLaudo(laudoForm: NgForm) {
+  salvarLaudo() {
     if (this.editando) {
-      this.atualizar(laudoForm);
+      this.atualizar(this.laudoForm);
     } else {
-      this.adicionar(laudoForm);
+      this.adicionar(this.laudoForm);
+      this.laudoForm.reset();
     }
   }
   adicionar(laudoForm: NgForm) {
     this.laudoPericialService.adicionar(this.laudoPericial)
       .then(() => {
         //implementar mensagem toast
-        laudoForm.reset();
+
         this.laudoPericial = new LaudoPericial();
       })
       .catch(erro => this.error.handle(erro));
