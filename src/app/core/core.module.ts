@@ -5,6 +5,7 @@ import { FormsModule } from '@angular/forms';
 import { ErrorHandlerService } from './error-handler.service';
 import { LaudoPericialService } from '../pages/laudo-pericial/shared/laudo-pericial.service';
 import { ConfirmationService, MessageService } from 'primeng/api';
+import { ParteService } from '../services/parte.service';
 
 
 
@@ -19,7 +20,8 @@ import { ConfirmationService, MessageService } from 'primeng/api';
     ErrorHandlerService,
     LaudoPericialService,
     MessageService,
-    ConfirmationService
+    ConfirmationService,
+    ParteService
   ]
 })
 export class CoreModule { }

@@ -24,12 +24,11 @@ import { CardModule } from 'primeng/card';
 import { FieldsetModule } from 'primeng/fieldset';
 import { FormsModule } from '@angular/forms';
 
-
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
-    SidebarComponent,
+    SidebarComponent
 
   ],
   imports: [
