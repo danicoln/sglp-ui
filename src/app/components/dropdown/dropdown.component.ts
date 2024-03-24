@@ -22,8 +22,10 @@ export class DropdownComponent implements ControlValueAccessor {
   @Output() valueChange: EventEmitter<any> = new EventEmitter<any>();
 
   private _valorSelecionado: any;
+
   onChange: any = () => {};
   onTouched: any = () => {};
+  value: any;
 
   constructor() { }
 
@@ -49,6 +51,12 @@ export class DropdownComponent implements ControlValueAccessor {
   registerOnTouched(fn: any): void {
     this.onTouched = fn;
   }
- 
+
+  onDropdownChange(value: any) {
+    this.value = value;
+    this.onChange(value);
+    this.onTouched(value);
+  }
+
 
 }

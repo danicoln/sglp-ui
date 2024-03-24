@@ -1,65 +1,87 @@
-<p-card class="col-12 md:col-12" header="Dados do Processo">
-  <div class="grid">
+<form [formGroup]="formGroup" (ngSubmit)="submitForm()">
 
-    <!--Número do Processo-->
-    <div class="col-12 md:col-12">
-      <div class="row">
-        <b class="label">Número</b>
+  <div class="card flex-column md:block-row md:justify-content-between">
+    <div class="grid">
+      <div class="col-12">
+        <h2 class="titulo">
+          Dados do Processo
+        </h2>
+
+      </div>
+      <div class="col-12">
+        <b>Vara: </b>
         <input
-          placeholder="Número"
-          pInputText
-          label="Número do Processo"
-          type="text"
-          [(ngModel)]="numero" />
+        placeholder="Vara"
+        pInputText
+        type="text"
+        formControlName="vara"/>
       </div>
-    </div>
-
-    <!--Autor-->
-    <div class="col-12 md:col-12">
-        <div class="row">
-          <b class="label">Autor</b>
-          <app-dropdown
-            name="label"
-            [options]="tiposAutor"
-            [(ngModel)]="autorSelecionado"
-            placeholder="Selecione"
-            (valueChange)="onDropdownValueChange($event, 'autor')"
-            >
-          </app-dropdown>
+      <div class="col-12">
+        <b>Comarca: </b>
+        <input
+        placeholder="Comarca"
+        pInputText
+        type="text"
+        formControlName="comarca"/>
       </div>
-    </div>
-
-    <!--Réu-->
-    <div class="col-12 md:col-12 sm:col-6 lg:col-12">
-      <div class="row">
-        <b class="label">Réu</b>
-        <!--
-          <input
+      <div class="col-12">
+        <b>Assunto: </b>
+        <input
+            placeholder="Assunto"
             pInputText
-            [(ngModel)]="parteReu"
-          >
-
-        -->
-        <app-dropdown
-            name="reu"
-            [options]="tiposReu"
-            [(ngModel)]="reuSelecionado"
-            placeholder="Selecione"
-            >
-          </app-dropdown>
-
+            type="text"
+            formControlName="assunto"/>
       </div>
-    </div>
+      <div class="col-12">
+        <b>Número: </b>
+        <input
+            placeholder="Informe o número do processo"
+            pInputText
+            type="text"
+            formControlName="numero"/>
+      </div>
+      <div class="col-12 md:col-12">
+        <app-dropdown class="mr-3"
+          name="label"
+          [options]="tiposDeAutor()"
+          placeholder="Selecione"
+          formControlName="parteAutora"
+          >
+        </app-dropdown>
+        {{ formGroup.get('parteAutora')?.value }}
+        <input
+              placeholder="Nome"
+              pInputText
+              type="text"
+              formControlName="nomeAutor"/>
+      </div>
 
+      <div class="col-12 md:col-12">
+        <app-dropdown class="mr-3"
+          name="label"
+          [options]="tiposDeReu()"
+          placeholder="Selecione"
+          formControlName="parteReu"
+          >
+        </app-dropdown>
+        <input
+              placeholder="Nome"
+              pInputText
+              type="text"
+              formControlName="nomeReu"/>
+      </div>
+
+      <p-button
+        type="submit"
+        pRipple
+        label="Salvar"
+        severity="success mr-2"
+        [disabled]="!formGroup.valid"
+        >
+      </p-button>
+    </div>
   </div>
 
-  <p-button
-    (click)="salvarDados()"
-    pRipple
-    label="Salvar"
-    severity="success mr-2"
-    [disabled]="!isPreenchido()"
-    >
-  </p-button>
 
-</p-card>
+</form>
+

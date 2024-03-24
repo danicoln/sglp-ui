@@ -6,6 +6,7 @@ import { ErrorHandlerService } from './error-handler.service';
 import { LaudoPericialService } from '../pages/laudo-pericial/shared/laudo-pericial.service';
 import { ConfirmationService, MessageService } from 'primeng/api';
 import { ParteService } from '../services/parte.service';
+import { ProcessoService } from '../components/processo/shared/processo.service';
 
 
 
@@ -21,7 +22,8 @@ import { ParteService } from '../services/parte.service';
     LaudoPericialService,
     MessageService,
     ConfirmationService,
-    ParteService
+    ParteService,
+    ProcessoService
   ]
 })
 export class CoreModule { }
