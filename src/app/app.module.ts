@@ -22,7 +22,7 @@ import { RouterModule } from '@angular/router';
 import { LaudoPericialModule } from './pages/laudo-pericial/laudo-pericial.module';
 import { CardModule } from 'primeng/card';
 import { FieldsetModule } from 'primeng/fieldset';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -32,6 +32,7 @@ import { FormsModule } from '@angular/forms';
 
   ],
   imports: [
+    ReactiveFormsModule,
     FormsModule,
     BrowserModule,
     BrowserAnimationsModule,
@@ -48,7 +49,7 @@ import { FormsModule } from '@angular/forms';
     FieldsetModule,
     RouterModule,
     LaudoPericialModule,
-    FileUploadModule
+    FileUploadModule,
 
 
   ],
