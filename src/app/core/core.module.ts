@@ -9,13 +9,15 @@ import { ParteService } from '../services/parte.service';
 import { ProcessoService } from '../components/processo/shared/processo.service';
 
 
-
 @NgModule({
   declarations: [],
   imports: [
     CommonModule,
     RouterModule,
     FormsModule
+  ],
+
+  exports: [
   ],
   providers: [
     ErrorHandlerService,

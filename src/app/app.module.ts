@@ -23,12 +23,13 @@ import { LaudoPericialModule } from './pages/laudo-pericial/laudo-pericial.modul
 import { CardModule } from 'primeng/card';
 import { FieldsetModule } from 'primeng/fieldset';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { ProcessoModule } from './components/processo/processo.module';
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
-    SidebarComponent
+    SidebarComponent,
 
   ],
   imports: [
@@ -48,9 +49,10 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     CardModule,
     FieldsetModule,
     RouterModule,
-    LaudoPericialModule,
     FileUploadModule,
 
+    LaudoPericialModule,
+    ProcessoModule
 
   ],
   providers: [],
