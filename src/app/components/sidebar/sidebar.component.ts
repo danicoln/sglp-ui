@@ -58,6 +58,23 @@ export class SidebarComponent implements OnInit {
 
         ]
       },
+      {
+        label: 'Processos',
+        icon: 'pi pi-fw pi-book',
+        items: [
+          {
+            label: 'Novo',
+            icon: 'pi pi-fw pi-plus-circle',
+            routerLink: '/processos/novo'
+          },
+          {
+            label: 'Consultar',
+            icon: 'pi pi-fw pi-list',
+            routerLink: '/processos'
+          },
+
+        ]
+      },
 
       {
         label: 'Nomeações',

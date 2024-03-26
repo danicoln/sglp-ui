@@ -1,6 +1,6 @@
 import { Injectable } from "@angular/core";
 import { HttpClient, HttpHeaders } from "@angular/common/http";
-import { firstValueFrom } from "rxjs";
+import { Observable, firstValueFrom } from "rxjs";
 import { Processo } from "./processo.model";
 
 @Injectable({
@@ -27,6 +27,14 @@ export class ProcessoService {
 
   }
 
+  atualizar(processo: Processo): Observable<Processo> {
+    const headers = new HttpHeaders()
+    .set('Authorization', this.chave)
+    .set('Content-Type', 'application/json');
+
+    return this.http.put<Processo>(`${this.url}/${processo.id}`, processo, { headers });
+  }
+
   async listar(): Promise<Processo[]> {
     const headers = new HttpHeaders().set('Authorization', this.chave);
 
@@ -36,10 +44,33 @@ export class ProcessoService {
 
     } catch (error) {
 
-      console.error('Erro ao listar laudos:', error);
+      console.error('Erro ao listar processos:', error);
       throw error;
     }
 
+  }
+
+  excluir(codigo: string): Promise<void> {
+    const headers = new HttpHeaders().set('Authorization', this.chave);
+    return firstValueFrom(this.http.delete<void>(`${this.url}/${codigo}`, { headers }));
+  }
+
+
+  buscarPorId(id: string): Promise<Processo> {
+    const headers = new HttpHeaders()
+    .set('Authorization', this.chave);
+
+  return this.http.get(`${this.url}/${id}`, { headers })
+    .toPromise()
+    .then((response: any) => {
+      const processo = response as Processo;
+
+      return processo;
+    })
+    .catch((error: any) => {
+      console.error('Erro ao buscar processo pelo id: ', error);
+      throw error;
+    });
   }
 
 }

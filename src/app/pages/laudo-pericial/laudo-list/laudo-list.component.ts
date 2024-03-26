@@ -35,12 +35,6 @@ export class LaudoListComponent implements OnInit {
   ) { }
 
 
-  /*
-  ngOnInit(): void {
-
-  }
-
-  */
   ngOnInit(): void {
     this.title.setTitle('Pesquisa de Laudos');
     this.laudoService.listar()

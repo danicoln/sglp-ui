@@ -1,9 +1,8 @@
-import { Parte } from './../../model/parte';
 import { Component, Input, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, NgForm, Validators } from '@angular/forms';
-import { Processo } from './shared/processo.model';
-import { ProcessoService } from './shared/processo.service';
-import { ErrorHandlerService } from '../../core/error-handler.service';
+import { Processo } from '../shared/processo.model';
+import { ProcessoService } from '../shared/processo.service';
+import { ErrorHandlerService } from '../../../core/error-handler.service';
 
 
 @Component({
@@ -13,18 +12,8 @@ import { ErrorHandlerService } from '../../core/error-handler.service';
 })
 export class ProcessoComponent implements OnInit {
 
-/**
- @Input() numero?: string;
- @Input() parteAutora?: any;
- @Input() parteReu?: any;
- *
- */
-
   processo: Processo = new Processo();
   formGroup!: FormGroup;
-
-  //tiposAutor!: string[];
-  //tiposReu!: string[];
 
   constructor(
     private processoService: ProcessoService,
@@ -51,11 +40,8 @@ export class ProcessoComponent implements OnInit {
         nomeReu: [''],
         parteAutora: [''],
         parteReu: ['']
-        //parteAutora: this.formBuilder.group({tipo: [null]}),
-       // parteReu: this.formBuilder.group({tipo: [null]}),
       });
     }
-
 
     submitForm() {
       if(this.formGroup && this.formGroup.valid) {
@@ -83,29 +69,17 @@ export class ProcessoComponent implements OnInit {
       }
     }
 
-
     tiposDeAutor(): string[] {
       return [
-
         'AUTOR',
         'REQUERENTE',
         'EXEQUENTE',
         'EMBARGANTE'
-        /**
-
-         {tipo: 'AUTOR'},
-         {tipo: 'REQUERENTE'}
-         */
       ];
     }
 
     tiposDeReu(): string[] {
       return [
-        /**
-         {tipo: 'REU'},
-         {tipo: 'REQUERIDO'}
-         *
-         */
         'REU',
         'REQUERIDO',
         'EXECUTADO',
@@ -143,6 +117,10 @@ salvar(form: NgForm) {
 
   get editando() {
     return Boolean(this.processo.id);
+  }
+
+  cancelar() {
+    this.formGroup?.reset();
   }
 
 

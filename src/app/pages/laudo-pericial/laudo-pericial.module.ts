@@ -20,6 +20,7 @@ import { ConfirmDialogModule } from 'primeng/confirmdialog';
 
 import { LaudoListComponent } from './laudo-list/laudo-list.component';
 import { SharedModule } from '../../shared/shared.module';
+import { ProcessoModule } from '../../components/processo/processo.module';
 
 
 @NgModule({
@@ -37,7 +38,6 @@ import { SharedModule } from '../../shared/shared.module';
     InputTextModule,
     InputTextareaModule,
     ButtonModule,
-    SharedModule,
     TableModule,
     ToolbarModule,
     ToastModule,
@@ -46,9 +46,15 @@ import { SharedModule } from '../../shared/shared.module';
     RatingModule,
     DialogModule,
     ConfirmDialogModule,
+    SharedModule,
 
+    ProcessoModule,
 
     LaudoPericialRoutingModule
+  ],
+  exports: [
+    LaudoPericialComponent,
+    LaudoListComponent
   ]
 })
 export class LaudoPericialModule { }
