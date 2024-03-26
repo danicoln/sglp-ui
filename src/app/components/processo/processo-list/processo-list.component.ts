@@ -1,10 +1,9 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ConfirmationService, MessageService } from 'primeng/api';
 import { ErrorHandlerService } from '../../../core/error-handler.service';
 import { Processo } from '../shared/processo.model';
 import { ProcessoService } from '../shared/processo.service';
-import { ActivatedRoute, Router } from '@angular/router';
-import { map, switchMap } from 'rxjs';
 
 @Component({
   selector: 'app-processo-list',
@@ -50,55 +49,33 @@ export class ProcessoListComponent implements OnInit {
   salvar() {
     this.submitted = true;
 
-    if (this.processo.numero?.trim()) {
-      if (this.processo.id) {
-        this.processos[this.findIndexById(this.processo.id)] = this.processo;
+    this.processoService.atualizar(this.processo).subscribe(
+      (processoAtualizado: Processo) => {
 
-        //this.editar(this.processo);
+        const index = this.processos.findIndex(p => p.id === processoAtualizado.id);
+        if (index !== -1) {
+          this.processos[index] = processoAtualizado;
+        }
 
         this.mensagemService.add({
           severity: 'success', summary: 'Sucesso', detail: 'Processo Atualizado', life: 3000
         });
-      } else {
-        this.processos.push(this.processo);
-
-        //this.processoService.salvar(this.processo);
-        this.mensagemService.add({
-          severity: 'success', summary: 'Sucesso', detail: 'Processo Criado', life: 3000
-        });
+        this.esconderDialog();
+      },
+      erro => {
+        this.error.handle(erro);
+        console.error('Ops! Erro ao atualizar o processo: ', erro);
       }
+    );
 
-      this.processos = [...this.processos];
-      this.processoDialog = false;
-      this.processo = {};
-    }
   }
 
-  editar(processo:Processo){}
-  /*
   editar(processo: Processo) {
+
     this.processo = { ...processo };
     this.processoDialog = true;
 
-   this.router.navigate(['editar',processo.id], {relativeTo: this.route});
   }
-
-  atualizar(processo: Processo) {
-
-    this.processoService.atualizar(processo).subscribe(
-      (processoAtualizado: Processo) => {
-        const index = this.processos.findIndex(p => p.id === processoAtualizado.id);
-        if(index !== -1){
-          this.processos[index] = processoAtualizado;
-        }
-
-        this.mensagemService.add({ severity: 'success', summary: 'Sucesso', detail: 'Processo Atualizado', life: 3000 })
-      },
-      error => {
-        this.error.handle(error);
-      }
-    );
-  }*/
 
   deletar(processo: Processo) {
 
@@ -110,18 +87,18 @@ export class ProcessoListComponent implements OnInit {
       rejectLabel: 'Não',
       accept: () => {
 
-        if(processo.id !== undefined) {
+        if (processo.id !== undefined) {
 
           this.processoService.excluir(processo.id)
-          .then(() => {
-            this.processos = this.processos.filter((value) => value.id !== processo.id);
-            this.processo = {};
-            this.mensagemService.add({ severity: 'success', summary: 'Sucesso', detail: 'Processo apagado', life: 3000 });
-          })
-          .catch((erro) => {
-            this.error.handle(erro);
-            this.mensagemService.add({ severity: 'error', summary: 'Erro', detail: 'Erro ao excluir o processo', life: 3000 });
-          });
+            .then(() => {
+              this.processos = this.processos.filter((value) => value.id !== processo.id);
+              this.processo = {};
+              this.mensagemService.add({ severity: 'success', summary: 'Sucesso', detail: 'Processo apagado', life: 3000 });
+            })
+            .catch((erro) => {
+              this.error.handle(erro);
+              this.mensagemService.add({ severity: 'error', summary: 'Erro', detail: 'Erro ao excluir o processo', life: 3000 });
+            });
 
         } else {
           console.error('ID do processo é undefined');
