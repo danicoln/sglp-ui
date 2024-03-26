@@ -102,14 +102,6 @@
   <p-dialog [(visible)]="processoDialog" [style]="{ width: '450px' }" header="Detalhes do Processo" [modal]="true" styleClass="p-fluid">
     <ng-template pTemplate="content">
         <div class="field">
-          <label for="comarca">Comarca</label>
-          <input type="text" pInputText id="comarca" [(ngModel)]="processo.comarca" autofocus />
-        </div>
-        <div class="field">
-          <label for="vara">Vara</label>
-          <input type="text" pInputText id="vara" [(ngModel)]="processo.vara" autofocus />
-        </div>
-        <div class="field">
             <label for="numero">Número</label>
             <input type="text" pInputText id="numero" [(ngModel)]="processo.numero" required autofocus />
             <small class="p-error" *ngIf="submitted && !processo.numero">Número é obrigatório.</small>
@@ -120,17 +112,9 @@
           <small class="p-error" *ngIf="submitted && !processo.assunto">Assunto é obrigatório.</small>
         </div>
         <div class="field">
-          <label for="parteAutora">Tipo do Autor</label>
-          <input type="text" pInputText id="parteAutora" [(ngModel)]="processo.parteAutora" autofocus />
-        </div>
-        <div class="field">
           <label for="nomeAutor">Nome do Autor</label>
           <input type="text" pInputText id="nomeAutor" [(ngModel)]="processo.nomeAutor" required autofocus />
           <small class="p-error" *ngIf="submitted && !processo.nomeAutor">Nome do autor é obrigatório.</small>
-        </div>
-        <div class="field">
-          <label for="parteReu">Tipo do Réu</label>
-          <input type="text" pInputText id="parteReu" [(ngModel)]="processo.parteReu" autofocus />
         </div>
         <div class="field">
           <label for="nomeReu">Nome do Réu</label>
